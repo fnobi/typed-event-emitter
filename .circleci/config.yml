@@ -55,6 +55,11 @@ jobs:
       - run:
           name: "git push"
           command: "git push origin $CIRCLE_BRANCH-$BUILD_BRANCHI_POSTFIX"
+      - run:
+          name: "tagging"
+          command: |
+            v=`node -e "console.log(JSON.parse(require('fs').readFileSync('package.json','utf8')).version)"`
+            git tag $v && git push --tags || echo "existing tag $v"
 
 workflows:
   version: 2
