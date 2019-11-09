@@ -45,6 +45,7 @@ describe('TypeRegi instance', () => {
             store.dispatch('increment', { value: 1 });
             store.dispatch('increment', { value: 1 });
             store.dispatch('increment', { value: 1 });
+            store.dispatch('increment', { value: 1 });
             const unsubscribe = store.subscribe((state: SampleState) => {
                 expect(state.count).toBe(5);
                 unsubscribe();
