@@ -1,6 +1,6 @@
 {
   "name": "type-regi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "event emitter with typescript typing.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
