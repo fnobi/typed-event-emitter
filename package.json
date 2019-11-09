@@ -1,0 +1,14 @@
+{
+  "name": "typed-event-emitter",
+  "version": "1.0.0",
+  "description": "event emitter with typescript typing.",
+  "main": "TypedEventEmitter.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "TypeScript"
+  ],
+  "author": "Fujisawa Shin",
+  "license": "ISC"
+}
