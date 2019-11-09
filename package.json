@@ -2,13 +2,15 @@
   "name": "type-regi",
   "version": "1.0.0",
   "description": "event emitter with typescript typing.",
-  "main": "src/TypeRegi.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "TypeScript"
   ],
+  "files": ["dist"],
   "author": "Fujisawa Shin",
   "license": "ISC",
   "dependencies": {
