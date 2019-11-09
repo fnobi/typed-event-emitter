@@ -107,8 +107,6 @@ workflows:
               only:
                 - master
       - npm_release:
-          requires:
-            - test
           filters:
             tags:
               only: /^v.*/
