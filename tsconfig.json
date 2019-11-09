@@ -10,6 +10,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
+    "isolatedModules": false,
     "forceConsistentCasingInFileNames": false,
     "noImplicitReturns": true,
     "strict": true,
@@ -25,8 +26,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules"
