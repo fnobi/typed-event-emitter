@@ -99,8 +99,9 @@ workflows:
   build_deploy:
     jobs:
       - test:
-        branches:
-          ignore: /-build$/
+          filters:
+            branches:
+              ignore: /-build$/
       - build_and_commit:
           requires:
             - test
