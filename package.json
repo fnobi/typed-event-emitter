@@ -1,8 +1,8 @@
 {
-  "name": "typed-event-emitter",
+  "name": "type-regi",
   "version": "1.0.0",
   "description": "event emitter with typescript typing.",
-  "main": "src/TypedEventEmitter.ts",
+  "main": "src/TypeRegi.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
