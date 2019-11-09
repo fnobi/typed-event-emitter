@@ -98,10 +98,7 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - test:
-          filters:
-            branches:
-              ignore: /-build$/
+      - test
       - build_and_commit:
           requires:
             - test
