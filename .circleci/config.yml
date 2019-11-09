@@ -53,13 +53,13 @@ jobs:
             set +o pipefail
             git commit -m 'build' | true
       - run:
-          name: "git push"
-          command: "git push origin $CIRCLE_BRANCH-$BUILD_BRANCHI_POSTFIX"
-      - run:
           name: "tagging"
           command: |
             v=`node -e "console.log(JSON.parse(require('fs').readFileSync('package.json','utf8')).version)"`
-            git tag v$v && git push --tags || echo "existing tag v$v"
+            git tag v$v || echo "existing tag v$v"
+      - run:
+          name: "git push"
+          command: "git push origin $CIRCLE_BRANCH-$BUILD_BRANCHI_POSTFIX"
 
   npm_release:
     docker:
