@@ -9,7 +9,7 @@ export default class TypeRegi<S, A> {
 
   private subscriptions: ((state: S) => void)[] = [];
 
-  private timer: number = 0;
+  private timer: NodeJS.Immediate | null = null;
 
   public constructor(state: S, actionCollection: ActionCollection<S, A>) {
     this.state = state;
@@ -56,14 +56,16 @@ export default class TypeRegi<S, A> {
     if (this.timer) {
       this.clearTimer();
     }
-    this.timer = setTimeout(() => {
+    this.timer = setImmediate(() => {
       fn();
       this.clearTimer();
     });
   }
 
   private clearTimer() {
-    clearTimeout(this.timer);
-    this.timer = 0;
+    if (this.timer) {
+      clearImmediate(this.timer);
+    }
+    this.timer = null;
   }
 }

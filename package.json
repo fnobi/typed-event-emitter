@@ -10,10 +10,15 @@
   "keywords": [
     "TypeScript"
   ],
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": "Fujisawa Shin",
   "license": "ISC",
   "dependencies": {
     "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.7"
   }
 }
