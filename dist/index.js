@@ -1,4 +1,6 @@
-export default class TypeRegi {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class TypeRegi {
     constructor(state, actionCollection) {
         this.subscriptions = [];
         this.timer = 0;
@@ -49,4 +51,5 @@ export default class TypeRegi {
         this.timer = 0;
     }
 }
+exports.default = TypeRegi;
 //# sourceMappingURL=index.js.map
