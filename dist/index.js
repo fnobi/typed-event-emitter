@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class TypeRegi {
     constructor(state, actionCollection) {
         this.subscriptions = [];
-        this.timer = 0;
+        this.timer = null;
         this.state = state;
         this.actionCollection = actionCollection;
     }
@@ -41,14 +41,16 @@ class TypeRegi {
         if (this.timer) {
             this.clearTimer();
         }
-        this.timer = setTimeout(() => {
+        this.timer = setImmediate(() => {
             fn();
             this.clearTimer();
         });
     }
     clearTimer() {
-        clearTimeout(this.timer);
-        this.timer = 0;
+        if (this.timer) {
+            clearImmediate(this.timer);
+        }
+        this.timer = null;
     }
 }
 exports.default = TypeRegi;
