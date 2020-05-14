@@ -41,14 +41,14 @@ class TypeRegi {
         if (this.timer) {
             this.clearTimer();
         }
-        this.timer = setImmediate(() => {
+        this.timer = setTimeout(() => {
             fn();
             this.clearTimer();
-        });
+        }, 0);
     }
     clearTimer() {
         if (this.timer) {
-            clearImmediate(this.timer);
+            clearTimeout(this.timer);
         }
         this.timer = null;
     }
