@@ -6,6 +6,7 @@ export default class TypeRegi<S, A> {
     private actionCollection;
     private subscriptions;
     private timer;
+    private lastId;
     constructor(state: S, actionCollection: ActionCollection<S, A>);
     dispatch<K extends keyof A>(type: K, payload: A[K]): void;
     getState(): S;

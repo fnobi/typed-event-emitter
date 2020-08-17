@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class TypeRegi {
     constructor(state, actionCollection) {
-        this.subscriptions = [];
+        this.subscriptions = new Map();
         this.timer = null;
+        this.lastId = 0;
         this.state = state;
         this.actionCollection = actionCollection;
     }
@@ -22,7 +23,9 @@ class TypeRegi {
         return this.state;
     }
     subscribe(handler) {
-        this.subscriptions.push(handler);
+        const id = this.lastId;
+        this.lastId += 1;
+        this.subscriptions.set(id, handler);
         // すでにsubscriptions実行のtimerがいるときはそれに任せる
         if (!this.timer) {
             this.fireTimer(() => {
@@ -30,11 +33,7 @@ class TypeRegi {
             });
         }
         return () => {
-            const index = this.subscriptions.findIndex(h => h === handler);
-            this.subscriptions = [
-                ...this.subscriptions.slice(0, index),
-                ...this.subscriptions.slice(index + 1)
-            ];
+            this.subscriptions.delete(id);
         };
     }
     fireTimer(fn) {
