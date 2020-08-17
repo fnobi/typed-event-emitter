@@ -7,9 +7,11 @@ export default class TypeRegi<S, A> {
 
   private actionCollection: ActionCollection<S, A>;
 
-  private subscriptions: ((state: S) => void)[] = [];
+  private subscriptions = new Map<number, (state: S) => void>();
 
   private timer: NodeJS.Timeout | null = null;
+
+  private lastId: number = 0;
 
   public constructor(state: S, actionCollection: ActionCollection<S, A>) {
     this.state = state;
@@ -34,7 +36,10 @@ export default class TypeRegi<S, A> {
   }
 
   public subscribe(handler: (state: S) => void): () => void {
-    this.subscriptions.push(handler);
+    const id = this.lastId;
+    this.lastId += 1;
+
+    this.subscriptions.set(id, handler);
 
     // すでにsubscriptions実行のtimerがいるときはそれに任せる
     if (!this.timer) {
@@ -44,11 +49,7 @@ export default class TypeRegi<S, A> {
     }
 
     return () => {
-      const index = this.subscriptions.findIndex(h => h === handler);
-      this.subscriptions = [
-        ...this.subscriptions.slice(0, index),
-        ...this.subscriptions.slice(index + 1)
-      ];
+      this.subscriptions.delete(id);
     };
   }
 
